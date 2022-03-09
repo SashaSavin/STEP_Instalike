@@ -6,9 +6,15 @@
 <div class="posts">
     <h5><a href="{% url 'post-detail' p.id %}">{{ user }}</a></h5>
     <a href="{% url 'post-detail' p.id %}"><img src="{{ p.photo}}" alt="{{ p.id }}" style="width: 500px;"/></a>
-    <p><button>like</button>
-        <button>save</button></p>
+    <strong class="text-secondary">{{ p.number_of_likes }} Like{{ p.number_of_likes|pluralize }}</strong>
 
 </div>
+
+
+
+
 {% endfor %}
+
+
+
 {% endblock %}

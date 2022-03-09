@@ -13,8 +13,13 @@
     <div class="header__elems">
         <a href="/">на главную</a>
         <a href="accounts/profile">мой профиль</a>
-        <a href="/help">разработчикам</a>
-        <a href="accounts/logout">выйти</a>
+        <a href="/help">о нас</a>
+
+        <form action="" method="post">{% csrf_token %}
+            <input type="search" placeholder="найти..">
+        </form>
+
+         <a href="accounts/logout">выйти</a>
     </div>
 </header>
 

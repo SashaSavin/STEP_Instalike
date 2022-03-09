@@ -5,4 +5,21 @@
 <p>{{post.message}}</p>
 <p>{{post.publication}}</p>
 
+  {% if user.is_authenticated %}
+  <form action="{% url 'post_like' post.id %}" method="POST">
+	{% csrf_token %}
+
+	{% if post_is_liked %}
+	<button type="submit" name="post_id" value="{{post.id}}" class="btn btn-info">Dislike</button>
+	{% else %}
+	<button type="submit" name="post_id" value="{{post.id}}" class="btn btn-info">Like</button>
+	{% endif %}
+  </form>
+{% else %}
+  <a class="btn btn-outline-info" href="{% url 'login' %}?next={{request.path}}">Log in to like this!</a><br>
+{% endif %}
+<strong class="text-secondary">{{ number_of_likes }} Like{{ number_of_likes|pluralize }}</strong>
+
+
+
 {% endblock %}
