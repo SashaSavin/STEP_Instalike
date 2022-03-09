@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% for p in posts %}
+<div class="posts">
+    <h5><a href="{% url 'post-detail' p.id %}">{{ user }}</a></h5>
+    <a href="{% url 'post-detail' p.id %}"><img src="{{ p.photo}}" alt="{{ p.id }}" style="width: 500px;"/></a>
+    <p><button>like</button>
+        <button>save</button></p>
+
+</div>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+{% block content %}
+<p>{{post.author}}</p>
+<img src="{{post.photo.url}}" alt="" width="500" height="500">
+<p>{{post.message}}</p>
+<p>{{post.publication}}</p>
+
+{% endblock %}
