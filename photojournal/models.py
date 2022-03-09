@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.urls import reverse
 
 
 class Post(models.Model):
@@ -7,9 +8,13 @@ class Post(models.Model):
     photo = models.ImageField(upload_to='static/imgs/posts', default=True)
     message = models.TextField(default=True)
     publication = models.DateTimeField()
+    slug = models.SlugField(null=True)
 
     def __str__(self):
         return str(self.message)
+
+    def get_absolute_url(self):
+        return reverse('post_detail', kwargs={'slug': self.slug})
 
 
 class Comment(models.Model):
