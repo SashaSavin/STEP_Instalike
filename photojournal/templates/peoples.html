@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<h1 style="text-align:center">Photojournalists:</h1>
+<hr>
+{% for people in peoples %}
+<p><a href="">{{people.user}}</a> <a href=""><button>подписаться</button></a></p>
+
+{% endfor %}
+
+{% endblock %}

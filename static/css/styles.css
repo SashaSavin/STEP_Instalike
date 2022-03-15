@@ -6,6 +6,11 @@ body{
 header{
     position: sticky;
     top: 0;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+}
+
+.post_image{
+    border-radius: 5px;
 }
 
 .header__elems{
@@ -27,6 +32,7 @@ header{
     border: 2px solid;
     margin-left: 100px;
     margin-right: 100px;
+    border-radius: 30px;
 }
 
 .avatar{

@@ -1,26 +1,35 @@
 from django.db import models
 from django.contrib.auth.models import User
-from django.template.defaultfilters import slugify
-from django.urls import reverse
+
+
+class Category(models.Model):
+    class Meta:
+        verbose_name = 'Category'
+        verbose_name_plural = 'Categories'
+
+    user = models.ForeignKey(
+        User, on_delete=models.SET_NULL, null=True, blank=True)
+    name = models.CharField(max_length=100, null=False, blank=False)
+
+    def __str__(self):
+        return self.name
 
 
 class Post(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
-    photo = models.ImageField(upload_to='static/imgs/posts', default=True)
+    photo = models.ImageField(upload_to='static/imgs/posts', default=False)
+    category = models.ForeignKey(
+        Category, on_delete=models.SET_NULL, null=True, blank=True)
     likes = models.ManyToManyField(User, related_name='post_like')
     message = models.TextField(default=True)
-    publication = models.DateTimeField()
-    slug = models.SlugField(null=True)
+    publication = models.DateTimeField(blank=True, null=True)
+    slug = models.SlugField(null=True, default=False)
 
     def number_of_likes(self):
         return self.likes.count()
 
     def __str__(self):
         return str(self.message)
-
-    def get_absolute_url(self):
-        return reverse('post_detail', kwargs={'pk': self.pk})
-
 
 
 class Comment(models.Model):
@@ -31,3 +40,5 @@ class Comment(models.Model):
 
     def __str__(self):
         return str(self.text)
+
+

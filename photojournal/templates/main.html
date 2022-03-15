@@ -1,20 +1,25 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<h1 style="text-align:center">Photojournal</h1>
+<hr>
 
-{% for p in posts %}
-<div class="posts">
-    <h5><a href="{% url 'post-detail' p.id %}">{{ user }}</a></h5>
-    <a href="{% url 'post-detail' p.id %}"><img src="{{ p.photo}}" alt="{{ p.id }}" style="width: 500px;"/></a>
-    <strong class="text-secondary">{{ p.number_of_likes }} Like{{ p.number_of_likes|pluralize }}</strong>
-
+{% for category in cathegories %}
+<div>
+    <h2>categories:</h2>
+    <a href="">{p.category}</a>
 </div>
-
-
-
-
 {% endfor %}
 
 
+{% for p in posts %}
 
+<div class="posts">
+    <h5><a href="{% url 'post-detail' p.id %}">{{ user }}</a></h5>
+    <a href="{% url 'post-detail' p.id %}"><img src="{{ p.photo}}" alt="{{ p.id }}" class="post_image" style="width: 500px;"/></a>
+    <strong class="text-secondary"> <i class="fa fa-thumbs-up" aria-hidden="true"></i>{{ p.number_of_likes }}</strong>
+
+</div>
+
+{% endfor %}
 {% endblock %}

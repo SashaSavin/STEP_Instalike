@@ -1,5 +1,5 @@
 from django.urls import path
-from photojournal.views import MainPageView, PageDetailView, HelpPageView, BlogPostLike
+from photojournal.views import MainPageView, PageDetailView, HelpPageView, BlogPostLike, PeopleListPageView
 
 urlpatterns = [
     path('', MainPageView.as_view()),
@@ -7,4 +7,6 @@ urlpatterns = [
     path('post/<int:pk>/', PageDetailView.as_view(), name='post-detail'),
     path('post-like/<int:pk>', BlogPostLike, name="post_like"),
     path('help/', HelpPageView.as_view(), name='help'),
+
+    path('people/', PeopleListPageView.as_view(), name='peoples')
 ]

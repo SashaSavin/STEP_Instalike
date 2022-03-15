@@ -1,0 +1,14 @@
+{% extends 'base.html' %} {% block content %}
+<a href="/">Назад</a>
+
+<div class="card" style="width: 300px">
+  <form action="" method="post">
+    {% csrf_token %}
+    <div class="card-body">
+      <p>Вы точно хотите удалить: "{{post}}" ?</p>
+      <input type="submit" value="Стереть!" class="btn btn-danger" />
+    </div>
+  </form>
+</div>
+
+{% endblock %}

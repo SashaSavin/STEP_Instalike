@@ -3,6 +3,8 @@
 
 {% block content %}
 
+<h1 style="text-align:center">Photojournalist page:</h1>
+<hr>
 {% for p in profile %}
 
 <div><h1> {{p.user}}</h1>
@@ -10,10 +12,10 @@
 </div>
 <div><p>{{p.info}}</p></div>
 {% endfor %}
-
-<button><a href="">Персональный блог</a></button>
-<button><a href="">Закладки</a></button>
+<button><a href="{% url 'post_create' %}">Создать пост</a></button>
+<button><a href="{% url 'user_posts' %}">Персональный блог</a></button>
+<button><a href="{% url 'user_saves' %}">Мои закладки</a></button>
 <button><a href="">Друзья</a></button>
-<button><a href="">Редактировать страницу</a></button>
+<button><a href="{% url 'user_update' %}">Редактировать профиль</a></button>
 
 {% endblock %}

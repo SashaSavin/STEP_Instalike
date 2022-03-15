@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="{% static 'css/styles.css' %}?{% now 'U' %}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
 </head>
 <body>
 
@@ -13,11 +14,13 @@
     <div class="header__elems">
         <a href="/">на главную</a>
         <a href="accounts/profile">мой профиль</a>
+        <a href="/people">люди</a>
         <a href="/help">о нас</a>
 
         <form action="" method="post">{% csrf_token %}
             <input type="search" placeholder="найти..">
         </form>
+
 
          <a href="accounts/logout">выйти</a>
     </div>

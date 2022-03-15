@@ -1,10 +1,9 @@
-from audioop import reverse
-
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
 from django.views.generic import ListView, DetailView, TemplateView
 from photojournal.models import Post
+from accounts.models import Profile
 
 
 class MainPageView(LoginRequiredMixin,ListView):
@@ -21,6 +20,7 @@ def BlogPostLike(request, pk):
         post.likes.add(request.user)
 
     return HttpResponseRedirect('/')
+
 
 class PageDetailView(LoginRequiredMixin,DetailView):
     model = Post
@@ -42,4 +42,12 @@ class PageDetailView(LoginRequiredMixin,DetailView):
 class HelpPageView(LoginRequiredMixin, TemplateView):
     template_name = 'help.html'
 
+
+class PeopleListPageView(LoginRequiredMixin, ListView):
+    model = Profile
+    template_name = 'peoples.html'
+    context_object_name = 'peoples'
+
+    def get_queryset(self):
+        return Profile.objects.all()
 

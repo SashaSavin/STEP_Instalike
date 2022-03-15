@@ -11,6 +11,8 @@ django-taggit = "*"
 django-crispy-forms = "*"
 djangorestframework = "*"
 drf-yasg = "*"
+celery = "*"
+redis = "*"
 
 [dev-packages]
 
